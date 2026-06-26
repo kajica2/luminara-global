@@ -30,7 +30,7 @@ test.describe("LUMINARA marketing site", () => {
 
   test("nav links resolve to sections", async ({ page }) => {
     await page.goto("/");
-    const links = ["Ecosystem", "Live", "Manifesto", "Get in touch", "Skills"];
+    const links = ["Ecosystem", "Live", "Manifesto", "Get in touch", "Skills", "Graph"];
     for (const label of links) {
       await expect(page.getByRole("link", { name: new RegExp(label, "i") }).first()).toBeVisible();
     }
@@ -63,6 +63,29 @@ test.describe("LUMINARA marketing site", () => {
     const filtered = await page.locator(".skill-card").count();
     expect(filtered).toBeGreaterThan(0);
     expect(filtered).toBeLessThan(count);
+  });
+
+  test("ecosystem graph renders nodes, edges, and layout switcher", async ({ page }) => {
+    await page.goto("/graph");
+    await expect(page.getByRole("heading", { name: /how the pieces connect/i })).toBeVisible();
+
+    // All 4 layout options exist.
+    for (const l of ["force", "hierarchical", "circular", "grid"]) {
+      await expect(page.locator(`button[data-layout="${l}"]`)).toBeVisible();
+    }
+
+    // At least 12 nodes are rendered (the SVG <g data-node> elements).
+    const nodes = page.locator("[data-node]");
+    const count = await nodes.count();
+    expect(count).toBeGreaterThanOrEqual(12);
+
+    // Switching layout updates node positions (the active button gets .active class).
+    await page.locator('button[data-layout="circular"]').click();
+    await expect(page.locator('button[data-layout="circular"].active')).toBeVisible();
+
+    // Click a node — info panel appears with its label.
+    await page.locator('[data-node="luminara"]').click();
+    await expect(page.locator(".graph-info h3")).toContainText("LUMINARA");
   });
 });
 

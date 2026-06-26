@@ -80,6 +80,9 @@ export function Pillars() {
               <Link href={p.href} target="_blank" rel="noopener" className="pillar__link">
                 View source ↗
               </Link>
+              <Link href="/graph" className="pillar__link" style={{ marginLeft: 12, color: "var(--accent-2)" }}>
+                See in graph map →
+              </Link>
             </article>
           ))}
         </div>
