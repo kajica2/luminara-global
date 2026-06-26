@@ -18,7 +18,8 @@ export function Hero() {
             machine, deploys when you say so.
           </p>
           <div className="hero__cta">
-            <Link href="#pillars" className="btn btn--primary">Explore the stack</Link>
+            <Link href="/skills" className="btn btn--primary">Per-skill offer</Link>
+            <Link href="#pillars" className="btn btn--ghost">Explore the stack</Link>
             <Link href="https://github.com/luminara-global" target="_blank" rel="noopener" className="btn btn--ghost">
               Read the source ↗
             </Link>

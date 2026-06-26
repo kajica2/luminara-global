@@ -9,6 +9,7 @@ export function Nav() {
           <span className="nav__brand-text">LUMINARA</span>
         </Link>
         <ul className="nav__links">
+          <li><Link href="/skills">Skills</Link></li>
           <li><Link href="#pillars">Ecosystem</Link></li>
           <li><Link href="#live">Live</Link></li>
           <li><Link href="#manifesto">Manifesto</Link></li>

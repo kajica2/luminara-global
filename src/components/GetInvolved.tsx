@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function GetInvolved() {
   return (
     <section id="contact" className="section section--last" aria-labelledby="contact-title">
@@ -33,6 +35,18 @@ export function GetInvolved() {
             <a href="https://github.com/luminara-global/agent-os" target="_blank" rel="noopener" className="btn btn--ghost">
               Get the operator ↗
             </a>
+          </article>
+
+          <article className="card">
+            <p className="card-meta" style={{ color: "var(--gold)" }}>Offer</p>
+            <h3>Per-skill pricing</h3>
+            <p>
+              {`>`}0 Hermes skills, one transparent price each. Pick the ones
+              you want; skip the rest. No seat fees, no platform tax.
+            </p>
+            <Link href="/skills" className="btn btn--ghost">
+              Browse the catalogue ↗
+            </Link>
           </article>
 
           <article className="card">
