@@ -1,0 +1,5 @@
+# LUMINARA — public site
+User-agent: *
+Allow: /
+
+Sitemap: https://luminara.global/sitemap.xml
